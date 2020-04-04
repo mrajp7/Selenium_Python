@@ -16,8 +16,3 @@ Test Automation project with Python and Selenium web driver
   [Windos] - Download and place it in any desired path. Remember to append
   the path variable or directly mention the path details in the scripts
   note: similar steps for geckodriver. Ensure to download the latest version depending upon your      OS and browser
-
-
-To Learn - 
-what is // in xpath
-whats the difference between css selector and xpath
