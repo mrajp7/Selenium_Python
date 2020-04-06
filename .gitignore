@@ -1,1 +1,4 @@
 sample_pytest_tests/__pycache__/*
+assets/style.css
+geckodriver.log
+geckodriver.log

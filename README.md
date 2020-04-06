@@ -18,7 +18,7 @@ Test Automation project with Python and Selenium web driver
   note: similar steps for geckodriver. Ensure to download the latest version depending upon your      OS and browser
 - pip3 install pytest
 
-# Pytest conventions
+# Pytest conventions:
 ## Test Filename rules:
   any pytest file should start with 'test*.py'
   ex: `test_login_valid_tc_01.py`
@@ -46,7 +46,7 @@ Test Automation project with Python and Selenium web driver
 ## Run a specific test file:
   `pytest sample_pytest_tests/test_another_demo.py -v -s`
 
-## Run tests matching test name pattern
+## Run tests matching test name:
   - To run a set of tests with a test case name pattern (which is persent in multiple files)
     `pytest -k testdemo -v -s`
     -k : flag to match the regular expression/pattern
@@ -65,4 +65,49 @@ Test Automation project with Python and Selenium web driver
       `@pytest.mark.skip`
     2. using `pytest.skip("skipping this test")` as first step inside the method
 
+## Fixtures:
+  ###### Basic usage:
+    - When we want any method to be run as pre-requiste or common setup fixtures can be used
+    - Just like Setup | Teardown in Testng or any harness tool, fixtures can be used for the same purpose.
+    - Fixture method need not have 'test_' method conventions, hence it will not be considered as a test case/method.
+    - Decorate the method with `@pytest.fixture`
+    - Once a fixture is available we can pass the method name as paramater to test methods.
+    `ex:
+    @pytest.fixrure
+    def setup():
+      pass
+    
+    def test_login(setup):
+      pass
+    `
+    - refer file - sample_pytest_tests\test_fixture_demo.py
+    - When we need to use a teardown, we can include the steps in the same fixture (setup) created with `yield` infront of the teardown steps.
 
+  ###### Module level fixtures:
+    - In order to use a fixture method through out all files in a folder we need to create a file with name `conftest.py`
+    - The fixture method has to be defined in this file and other files now can access this fixture.
+
+  ###### Class level fixtures:
+    - When we need to include fixture for many tests in a file, instead of passing it as argument on every step, we can create a class level decorations
+    - create a class and add all the tests as methods to the class
+    - Add decoration `@pytest.mark.usefixtures("<fixture_method_name>") on the class level.
+    - When we need a fixture to run only once before all test methods starts execution,
+      define the fixture scope as class
+      `@pytest.fixture(scope="class")`
+    - refer file - sample_pytest_tests\test_fixture_demo.py
+  
+  ###### Fixtures as data input
+    - A fixture can also be used as data provider for a test method
+    - A fixture can return any object type from the method (string, tuple, list etc.,)
+    - for class level usage, even though the data fixture (which returns value) is decorated at class level, a test method should again use it in the paramter for the using the value that is being returned.
+    - refer file - sample_pytest_tests\test_data_fixtures_demo.py
+
+  ###### Fixtures run tests with different data
+    - A fixture can be configured to return multiple params.
+    - When consumed by a test method it runs for n times depending on the n params
+    - refer file - sample_pytest_tests\test_params_fixtures_demo.py
+
+# Pytest html reporting:
+  - to install - pip3 install pytest-html
+  - while running test over CLI run the following command to generate html report
+    `pytest --html=report.html`
