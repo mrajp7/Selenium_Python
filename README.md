@@ -41,22 +41,28 @@ Test Automation project with Python and Selenium web driver
     _Note: Here on we will focus on CLI test run mode._
 
 ## pytest reference:
-  https://docs.pytest.org/en/latest/usage.html
+  - https://docs.pytest.org/en/latest/usage.html
   
 ## Run a specific test file:
   `pytest sample_pytest_tests/test_another_demo.py -v -s`
 
 ## Run tests matching test name pattern
-  To run a set of tests with a test case name pattern (which is persent in multiple files)
-  `pytest -k testdemo -v -s`
-  -k : flag to match the regular expression/pattern
+  - To run a set of tests with a test case name pattern (which is persent in multiple files)
+    `pytest -k testdemo -v -s`
+    -k : flag to match the regular expression/pattern
 
 ## Run tests suites [group] :
-  To run a group of test (Smoke|Regression etc.,) pytest 'mark' is used.
-  it is decorated on a test method as `@pytest.mark.smoke`
-  _Note: 'suites or mark' has to be registered in pytest.ini file in order to decorate on a test._
-  [LETS COVER THIS IN LATER PART OF THE FRAMEWORK CONFIGURATIONS]
-  `pytest -m smoke -v -s`
-  -m : flag to choose a marked suite in a test
+  - To run a group of test (Smoke|Regression etc.,) pytest 'mark' is used.
+    it is decorated on a test method as `@pytest.mark.smoke`
+    _Note: 'suites or mark' has to be registered in pytest.ini file in order to decorate on a test._
+    [LETS COVER THIS IN LATER PART OF THE FRAMEWORK CONFIGURATIONS]
+    `pytest -m smoke -v -s`
+    -m : flag to choose a marked suite in a test
 
-- To skip
+## Skip tests:
+  - To skip tests while running tests, there are two ways,
+    1. to decorate your test method with default mark
+      `@pytest.mark.skip`
+    2. using `pytest.skip("skipping this test")` as first step inside the method
+
+
