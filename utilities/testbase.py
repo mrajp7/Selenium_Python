@@ -1,5 +1,5 @@
 import pytest
 
-@pytest.mark.usefixture("setup")
+@pytest.mark.usefixtures("setup")
 class TestBase:
     pass
