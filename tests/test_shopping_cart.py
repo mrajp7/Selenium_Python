@@ -8,9 +8,28 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.by import By
 
-class TestSample(TestBase):
 
-    def test_sample(self):
+class TestShoppingCart(TestBase):
+    """
+    TestShoppingCart comprises of test cases that validates the shopping cart website
+
+    It Inherits - TestBase class 
+    which in turn takes care of setup and teardown for the Test class
+
+    """
+
+    def test_shopping_cart_happy_path(self):
+        """
+        Shopping cart End to End test
+
+        Steps:
+        1. Load the shopping website - https://rahulshettyacademy.com/angularpractice/shop
+        2. Add blackberry mobile to the cart
+        3. Navigtate to checkout
+        4. Add delivery details
+        5. Complete the checkout
+        
+        """
         # find all the list items and search for 'Blackberry'
         items = self.driver.find_elements_by_css_selector('h4.card-title')
 
