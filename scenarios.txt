@@ -1,0 +1,8 @@
+1. Shopping cart End to End test
+
+Steps:
+1. Load the shopping website - https://rahulshettyacademy.com/angularpractice/shop
+2. Add blackberry mobile to the cart
+3. Navigtate to checkout
+4. Add delivery details
+5. Complete the checkout

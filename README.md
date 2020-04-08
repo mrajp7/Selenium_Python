@@ -111,3 +111,12 @@ Test Automation project with Python and Selenium web driver
   - to install - pip3 install pytest-html
   - while running test over CLI run the following command to generate html report
     `pytest --html=report.html`
+  
+# Logging:
+  - We use the package 'logging' which is by default included in Python
+  - Genrally Logs gives more information on how the test has run and it even support or provide more information to a non technical person as well.
+  - Logs helps in understanding the test code, steps and test failures wihtout debugging the tests
+  - the format of logging each step is,
+    `<timestamp> : <log_type> : <testcase_name> : <log_message>`
+  - log_types - info, debug, warning, error, critical
+  - refer file - sample_pytest_tests\test_logging_demo.py
