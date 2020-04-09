@@ -3,3 +3,6 @@ assets/style.css
 geckodriver.log
 utilities/__pycache__/*
 tests/__pycache__/*
+geckodriver.log
+page_objects/__pycache__/*
+tests/__pycache__/*
