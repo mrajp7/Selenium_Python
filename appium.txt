@@ -1,0 +1,77 @@
+
+
+Appium architecture:
+~~~~~~~~~~~~~~~~~~~~
+
+PS - *The communication is bi directional and a response is provided to the client on every call.
+
+----------------------------------------------------------------------------------------------------------
+
+Appium Client [Supported in c#, Python, Java etc.,]
+
+	|
+	| (json - API call)
+	*
+
+Appium Server [hosted locally or anywhere 4367]
+
+	|
+	| (has the knowledge of Products connected to the server)
+	| (iOS real and simulators, Android real and simulators) connected over wifi or direct bridge
+	*
+UIAutomator2 DRIVER					XCUITEST DRIVER
+	|						                 |
+	|    			json - api call		     |
+	*						                 *
+(UIAutomator Server)					(WebdriverAgent)
+UIAutomator2           					  XCUITEST 
+
+     |							                             |
+     |        Inbuilt platform specific test frameworks      |
+     *                                                       * 
+
+Android Devices						                    iOS Devices
+
+
+-----------------------------------------------------------------------------------------------------------
+
+Appium setup:
+
+1. Download Java and set java_home in environment variables
+
+Install JDK on Ubuntu:
+    > sudo apt update
+    > sudo apt install default-jdk
+    > java -version
+
+Set JAVA_HOME environment variables
+
+    To get the installation path of java
+    > sudo update-alternatives --config java
+    > sudo nano /etc/environment
+    Add the following command at the last
+    > JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+    save and run the command again on terminal to save the changes
+    > source /etc/environment
+    verify the path is returned
+    > echo $JAVA_HOME
+
+Note: For windows/mac - follow https://www.oracle.com/java/technologies/javase-downloads.html
+
+2. Install Android studio
+
+3. Update the Android studio home path in environment valriable
+    ANDROID_HOME = path to the SDK
+
+4. Update the tools, tools/bin, platformtools in environment path
+
+5. To configure Emulator open android studio and open the emulator, choose mobile device and launch
+    To invoke emulator once already created through android studio then we can launch from CLI
+    `emulator -avd </path/name_of_emulator>`
+6. Download Node.js [Appium comes as a node module] 
+7. Update the Node_Home environment variables
+8. Update the path of npm to path variable.
+9. Download Appium server
+    npm install -g appium
+10. Download Appium client
+	

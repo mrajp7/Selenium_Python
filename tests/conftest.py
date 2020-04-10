@@ -20,7 +20,7 @@ def setup(request):
         driver = webdriver.Chrome()
     
     # Navigate to the AUT URL
-    driver.get("https://rahulshettyacademy.com/angularpractice/shop")
+    driver.get("https://rahulshettyacademy.com/angularpractice")
     driver.maximize_window()
     request.cls.driver = driver
 

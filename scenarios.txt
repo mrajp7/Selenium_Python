@@ -6,3 +6,15 @@ Steps:
 3. Navigtate to checkout
 4. Add delivery details
 5. Complete the checkout
+
+2. Fill up the home page with valid data
+
+Steps
+1. Load the home page - https://rahulshettyacademy.com/angularpractice/
+2. Enter a valid details on 'Name', 'Email', 'Password',  
+    Yes to (check me out if you love Icecreams!) 'Checkbox',
+    Select an option from 'Gender',
+    choose the 'Employment Status' radio button - 'Employed',
+    Enter a valid 'Date of Birth'
+3. Click on Submit
+4.  Verify the alert message - success

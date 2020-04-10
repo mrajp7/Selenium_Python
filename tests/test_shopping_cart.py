@@ -4,11 +4,7 @@ sys.path.append(os.path.dirname(__file__) + '/..')
 
 import pytest
 from utilities.testbase import TestBase
-from page_objects.checkout_page import CheckoutPage
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.common.by import By
-
+from page_objects.home_page import HomePage
 
 class TestShoppingCart(TestBase):
     """
@@ -31,7 +27,8 @@ class TestShoppingCart(TestBase):
         5. Complete the checkout
         
         """
-        checkout_page = CheckoutPage(self.driver)
+        home_page = HomePage(self.driver)
+        checkout_page = home_page.navigate_shop_to_checkout()
 
         # find all the list items and search for 'Blackberry'
         items = checkout_page.get_card_titles()
