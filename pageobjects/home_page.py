@@ -1,7 +1,7 @@
 # Page objects for Checkout Page
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from page_objects.checkout_page import CheckoutPage
+from pageobjects.checkout_page import CheckoutPage
 
 class HomePage:
 

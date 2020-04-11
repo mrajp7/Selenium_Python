@@ -4,7 +4,8 @@ sys.path.append(os.path.dirname(__file__) + '/..')
 
 import pytest
 from utilities.testbase import TestBase
-from page_objects.home_page import HomePage
+from pageobjects.home_page import HomePage
+from testdata.home_page_data import HomePageData
 
 class TestHomePage(TestBase):
     """
@@ -17,7 +18,7 @@ class TestHomePage(TestBase):
 
     """
 
-    def test_home_page_happy_path(self):
+    def test_home_page_happy_path(self,getdata):
         """
         Steps
         1. Load the home page - https://rahulshettyacademy.com/angularpractice/
@@ -29,29 +30,39 @@ class TestHomePage(TestBase):
         3. Click on Submit
         4.  Verify the alert message - success
         """
-
+        log = self.get_logger()
         # create object for homepage Page Object.
         home_page = HomePage(self.driver)
 
         # set values to the fields Name,Email,Password,Checkbox
-        home_page.get_name_input().send_keys("Mohan raj")
-        home_page.get_email_input().send_keys("mohan.raj888@gmail.com")
-        home_page.get_password_input().send_keys("test1234")
-        home_page.get_ice_cream_checkbox().click()
+        home_page.get_name_input().send_keys(getdata["firstname"])
+        home_page.get_email_input().send_keys(getdata["email"])
+        home_page.get_password_input().send_keys(getdata["password"])
+        if getdata["enable_check"]:
+            home_page.get_ice_cream_checkbox().click()
 
         # select gender as Male
         # call the utility method in testbase to achieve the same
-        self.select_option_by_text(home_page.get_gender_select(),"Male")
+        self.select_option_by_text(home_page.get_gender_select(),getdata["gender"])
 
         # click on the Employed radio button to enable it
         home_page.get_employed_radio().click()
 
         # enter a valid date of birth on the DON field
-        home_page.get_dob_date().send_keys("01091989")
+        home_page.get_dob_date().send_keys(getdata["dob"])
+        log.info("The form is filled with the test data succesfully")
+        log.info(getdata)
 
         # click on submit
         home_page.get_submit_button().click()
 
         success_message = home_page.get_alert_message().text
-
+        log.info("The message received after form submittion," + success_message)
         assert "Success! The Form has been submitted" in success_message
+        log.info("Test completed")
+
+    
+    @pytest.fixture(params=HomePageData.home_page_happy_path_data)
+    def getdata(self,request):
+        self.driver.refresh()
+        return request.param

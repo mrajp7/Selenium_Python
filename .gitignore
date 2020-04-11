@@ -6,3 +6,9 @@ tests/__pycache__/*
 geckodriver.log
 page_objects/__pycache__/*
 tests/__pycache__/*
+tests/__pycache__/conftest.cpython-36-pytest-5.4.1.pyc
+pageobjects/__pycache__/checkout_page.cpython-36.pyc
+pageobjects/__pycache__/confirm_page.cpython-36.pyc
+pageobjects/__pycache__/home_page.cpython-36.pyc
+testdata/__pycache__/home_page_data.cpython-36.pyc
+tests/__pycache__/conftest.cpython-36-pytest-5.4.1.pyc
