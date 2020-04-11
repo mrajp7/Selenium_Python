@@ -1,11 +1,14 @@
 import os.path
 import sys
-sys.path.append(os.path.dirname(__file__) + '/..')
 
+sys.path.append(os.path.dirname(__file__) + "/..")
+
+import logging
 import pytest
 from utilities.testbase import TestBase
 from pageobjects.home_page import HomePage
 from testdata.home_page_data import HomePageData
+
 
 class TestHomePage(TestBase):
     """
@@ -18,7 +21,7 @@ class TestHomePage(TestBase):
 
     """
 
-    def test_home_page_happy_path(self,getdata):
+    def test_home_page_happy_path(self, getdata):
         """
         Steps
         1. Load the home page - https://rahulshettyacademy.com/angularpractice/
@@ -30,7 +33,6 @@ class TestHomePage(TestBase):
         3. Click on Submit
         4.  Verify the alert message - success
         """
-        log = self.get_logger()
         # create object for homepage Page Object.
         home_page = HomePage(self.driver)
 
@@ -43,26 +45,25 @@ class TestHomePage(TestBase):
 
         # select gender as Male
         # call the utility method in testbase to achieve the same
-        self.select_option_by_text(home_page.get_gender_select(),getdata["gender"])
+        self.select_option_by_text(home_page.get_gender_select(), getdata["gender"])
 
         # click on the Employed radio button to enable it
         home_page.get_employed_radio().click()
 
         # enter a valid date of birth on the DON field
         home_page.get_dob_date().send_keys(getdata["dob"])
-        log.info("The form is filled with the test data succesfully")
-        log.info(getdata)
+        logging.info("The form is filled with the test data succesfully")
+        logging.info(getdata)
 
         # click on submit
         home_page.get_submit_button().click()
 
         success_message = home_page.get_alert_message().text
-        log.info("The message received after form submittion," + success_message)
+        logging.info("The message received after form submittion," + success_message)
         assert "Success! The Form has been submitted" in success_message
-        log.info("Test completed")
+        logging.info("Test completed")
 
-    
     @pytest.fixture(params=HomePageData.home_page_happy_path_data)
-    def getdata(self,request):
+    def getdata(self, request):
         self.driver.refresh()
         return request.param
