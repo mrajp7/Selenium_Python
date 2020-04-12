@@ -27,9 +27,8 @@ class TestShoppingCart(TestBase):
         5. Complete the checkout
         
         """
-        log = self.get_logger()
-
         # create page objects
+        log = self.get_logger()
         home_page = HomePage(self.driver)
         checkout_page = home_page.navigate_shop_to_checkout()
         log.info("Navigated to shop")
@@ -77,3 +76,7 @@ class TestShoppingCart(TestBase):
 
         assert "Success! Thank you!" in confirm_page.get_success_alert().text
         log.info("Test completed")
+
+    def test_dummy_to_check_log(self):
+        log = self.get_logger()
+        log.info("teet")

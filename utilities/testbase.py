@@ -17,26 +17,13 @@ class TestBase:
         sel.select_by_visible_text(text)
 
     def get_logger(self):
-        # create object for the logging
-            
-        # getLogger accepts a optional param name: and 
-        # assigns the value to logging objects global variable 'name'
-        
-        # inspect,stack() provides the stack trace of the caller
-        # [1][3] gives the method that was calling the logger instance
-        # since pytest considers method as testname we select that as logger name
-        caller_name = inspect.stack()[1][3]
-        logger = logging.getLogger(caller_name) 
+        # stack [1][3] provides the test method name
+        logger_name = inspect.stack()[1][3]
+        logger = logging.getLogger(logger_name) 
 
         # create a filehandler (file location)
-        fileHandler = logging.FileHandler('logfile.txt') #,mode="w"
-
-        # create a formatter object
-        # <timestamp> : asctime
-        # <log_type> : levelname [info/debug/warning/error/critical]
-        # <testcase_name> : name [__name__] (we have set while creating logger object line:15)
-        # <log_message> : message (which will be called as logger.info(message))
-        formatter = logging.Formatter("%(asctime)s : %(levelname)s : %(name)s : %(message)s")
+        fileHandler = logging.FileHandler('logfile.log') #,mode="w"
+        formatter = logging.Formatter("%(asctime)s :%(levelname)s : %(name)s : %(message)s")
 
         # attach the formatter to filehandler object
         fileHandler.setFormatter(formatter)
@@ -45,11 +32,6 @@ class TestBase:
         logger.addHandler(fileHandler)
 
         # set level for the logger.
-        # logger.setLevel is the hierarchy for logging
-        # hierarchy is 1.debug, 2.info, 3.warning, 4.error, 5.critical
-        # if 'debug is set all logs level will be captured
-        # if 'info' is set except debug all types will be captured 
-        
         logger.setLevel(self.log_level)
 
         return logger

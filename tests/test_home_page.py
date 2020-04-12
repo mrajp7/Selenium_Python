@@ -52,6 +52,7 @@ class TestHomePage(TestBase):
         home_page.get_dob_date().send_keys(getdata["dob"])
         log.info("The form is filled with the test data succesfully")
         log.info(getdata)
+        log.debug("This is a debug level info")
 
         # click on submit
         home_page.get_submit_button().click()
