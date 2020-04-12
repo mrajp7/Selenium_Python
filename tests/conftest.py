@@ -73,8 +73,7 @@ def init_logger(request):
     logger = logging.getLogger()
 
     # create a filehandler (file location)
-    fileHandler = logging.FileHandler("logfile.txt")  # ,mode="w"
-
+    fileHandler = logging.FileHandler("logfile.txt",mode="w")  # 
     # create a formatter object
     # <timestamp> : asctime
     # <log_type> : levelname [info/debug/warning/error/critical]
@@ -97,7 +96,3 @@ def init_logger(request):
     # if 'info' is set except debug all types will be captured
 
     logger.setLevel(log_level)
-
-@pytest.fixture(scope='class')
-def get_logger(request):
-    request.cls.log = logging.getLogger()

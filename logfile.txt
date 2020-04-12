@@ -1,0 +1,15 @@
+2020-04-12 13:10:30,927 : INFO : test_home_page_happy_path : The form is filled with the test data succesfully
+2020-04-12 13:10:30,928 : INFO : test_home_page_happy_path : {'firstname': 'Mohanraj', 'email': 'mohan.raj888@gmail.com', 'password': 'test1234', 'enable_check': True, 'gender': 'Male', 'dob': '01091989'}
+2020-04-12 13:10:31,166 : INFO : test_home_page_happy_path : The message received after form submittion,×
+Success! The Form has been submitted successfully!.
+2020-04-12 13:10:31,167 : INFO : test_home_page_happy_path : Test completed
+2020-04-12 13:10:32,773 : INFO : test_home_page_happy_path : The form is filled with the test data succesfully
+2020-04-12 13:10:32,773 : INFO : test_home_page_happy_path : {'firstname': 'Praveena', 'email': 'praveena.njb@gmail.com', 'password': 'test1234', 'enable_check': True, 'gender': 'Female', 'dob': '09061990'}
+2020-04-12 13:10:32,956 : INFO : test_home_page_happy_path : The message received after form submittion,×
+Success! The Form has been submitted successfully!.
+2020-04-12 13:10:32,958 : INFO : test_home_page_happy_path : Test completed
+2020-04-12 13:10:37,377 : INFO : test_shopping_cart_happy_path : Navigated to shop
+2020-04-12 13:10:37,950 : INFO : test_shopping_cart_happy_path : Succesfully added 'Blackberry' to the cart
+2020-04-12 13:10:43,617 : INFO : test_shopping_cart_happy_path : 'India' has been selected as delivery location
+2020-04-12 13:10:43,901 : INFO : test_shopping_cart_happy_path : Waiting for the order confirmation message
+2020-04-12 13:10:43,991 : INFO : test_shopping_cart_happy_path : Test completed

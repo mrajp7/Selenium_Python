@@ -34,7 +34,7 @@ class TestHomePage(TestBase):
         4.  Verify the alert message - success
         """
         # create object for homepage Page Object.
-        self.log.name = "test_home_page_happy_path"
+        logging.getLogger().name = "test_home_page_happy_path"
         home_page = HomePage(self.driver)
 
         # set values to the fields Name,Email,Password,Checkbox
