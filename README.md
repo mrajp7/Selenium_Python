@@ -126,3 +126,6 @@ Test Automation project with Python and Selenium web driver
  - A shell script is created as test_run.sh
  - change the mode of the file as `chmod +x test_run.sh`
  - run in the terminal as `.\test_run.sh`
+
+ # To read data from excel
+  - `pip3 install openpyxl`

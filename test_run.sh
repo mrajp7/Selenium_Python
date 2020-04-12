@@ -1,1 +1,1 @@
-pytest tests -v -s --browser_name=chrome --log_level=info --html=reports/report.html --junitxml=reports/results.xml
+pytest tests -v -s --browser_name=chrome --log_level=info --html=reports/report.html
