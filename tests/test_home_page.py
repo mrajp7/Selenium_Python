@@ -3,6 +3,7 @@ import sys
 sys.path.append(os.path.dirname(__file__) + '/..')
 
 import pytest
+import logging
 from utilities.testbase import TestBase
 from pageobjects.home_page import HomePage
 from testdata.home_page_data import HomePageData
@@ -30,7 +31,9 @@ class TestHomePage(TestBase):
         3. Click on Submit
         4.  Verify the alert message - success
         """
-        log = self.get_logger()
+        # setting the logger root name to current test name
+        logging.getLogger().name = "test_home_page_happy_path"
+
         # create object for homepage Page Object.
         home_page = HomePage(self.driver)
 
@@ -50,17 +53,17 @@ class TestHomePage(TestBase):
 
         # enter a valid date of birth on the DON field
         home_page.get_dob_date().send_keys(getdata["dob"])
-        log.info("The form is filled with the test data succesfully")
-        log.info(getdata)
-        log.debug("This is a debug level info")
+        logging.info("The form is filled with the test data succesfully")
+        logging.info(getdata)
+        logging.debug("This is a debug level info")
 
         # click on submit
         home_page.get_submit_button().click()
 
         success_message = home_page.get_alert_message().text
-        log.info("The message received after form submittion," + success_message)
+        logging.info("The message received after form submittion," + success_message)
         assert "Success! The Form has been submitted" in success_message
-        log.info("Test completed")
+        logging.info("Test completed")
 
     
     @pytest.fixture(params=HomePageData.home_page_happy_path_data)
