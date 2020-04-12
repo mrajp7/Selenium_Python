@@ -120,3 +120,9 @@ Test Automation project with Python and Selenium web driver
     `<timestamp> : <log_type> : <testcase_name> : <log_message>`
   - log_types - info, debug, warning, error, critical
   - refer file - sample_pytest_tests\test_logging_demo.py
+
+# Run Test Final command to incorporate all required flag and inputs
+`pytest tests -v -s --browser_name=chrome --log_level=info --html=reports/report.html --junitxml=reports/results.xml`
+ - A shell script is created as test_run.sh
+ - change the mode of the file as `chmod +x test_run.sh`
+ - run in the terminal as `.\test_run.sh`

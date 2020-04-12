@@ -81,5 +81,7 @@ class TestShoppingCart(TestBase):
         logging.info("Test completed")
 
     def test_dummy_to_check_log(self):
+        self.driver.refresh()
         logging.getLogger().name = "test_dummy_to_check_log"
-        logging.info("No Test steps. Purpose: test logging")
+        logging.info("No Test steps. Purpose: to capture a screen shot when test fails")
+        # assert 0
