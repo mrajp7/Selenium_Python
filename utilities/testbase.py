@@ -6,7 +6,7 @@ import inspect
 import logging
 
 
-@pytest.mark.usefixtures("setup")
+@pytest.mark.usefixtures("setup","init_logger","get_logger")
 class TestBase:
     def wait_for_element(self, locator_tuple, timeout_in_sec):
         WebDriverWait(self.driver, timeout_in_sec).until(

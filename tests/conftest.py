@@ -37,8 +37,6 @@ def setup(request):
     driver.get("https://rahulshettyacademy.com/angularpractice")
     driver.maximize_window()
     request.cls.driver = driver
-    request.cls.log_level = get_log_level(request.config.getoption("log_level"))
-    init_logger(request.cls.log_level)
 
     # Teardown steps
     yield
@@ -59,8 +57,10 @@ def get_log_level(logger_str):
     else:
         return logging.INFO
 
+@pytest.fixture(scope="session")
+def init_logger(request):
+    log_level = get_log_level(request.config.getoption("log_level"))
 
-def init_logger(log_level):
     # create object for the logging
 
     # getLogger accepts a optional param name: and
@@ -69,7 +69,7 @@ def init_logger(log_level):
     # inspect,stack() provides the stack trace of the caller
     # [1][3] gives the method that was calling the logger instance
     # since pytest considers method as testname we select that as logger name
-    caller_name = inspect.stack()[1][3]
+    # caller_name = inspect.stack()[1][3]
     logger = logging.getLogger()
 
     # create a filehandler (file location)
@@ -97,3 +97,7 @@ def init_logger(log_level):
     # if 'info' is set except debug all types will be captured
 
     logger.setLevel(log_level)
+
+@pytest.fixture(scope='class')
+def get_logger(request):
+    request.cls.log = logging.getLogger()
