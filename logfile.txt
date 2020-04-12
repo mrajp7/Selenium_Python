@@ -13,3 +13,18 @@ Success! The Form has been submitted successfully!.
 2020-04-12 13:10:43,617 : INFO : test_shopping_cart_happy_path : 'India' has been selected as delivery location
 2020-04-12 13:10:43,901 : INFO : test_shopping_cart_happy_path : Waiting for the order confirmation message
 2020-04-12 13:10:43,991 : INFO : test_shopping_cart_happy_path : Test completed
+[I 200412 13:27:01 test_home_page:55] The form is filled with the test data succesfully
+[I 200412 13:27:01 test_home_page:56] {'firstname': 'Mohanraj', 'email': 'mohan.raj888@gmail.com', 'password': 'test1234', 'enable_check': True, 'gender': 'Male', 'dob': '01091989'}
+[I 200412 13:27:01 test_home_page:62] The message received after form submittion,×
+    Success! The Form has been submitted successfully!.
+[I 200412 13:27:01 test_home_page:64] Test completed
+[I 200412 13:27:02 test_home_page:55] The form is filled with the test data succesfully
+[I 200412 13:27:02 test_home_page:56] {'firstname': 'Praveena', 'email': 'praveena.njb@gmail.com', 'password': 'test1234', 'enable_check': True, 'gender': 'Female', 'dob': '09061990'}
+[I 200412 13:27:02 test_home_page:62] The message received after form submittion,×
+    Success! The Form has been submitted successfully!.
+[I 200412 13:27:02 test_home_page:64] Test completed
+[I 200412 13:27:07 test_shopping_cart:36] Navigated to shop
+[I 200412 13:27:07 test_shopping_cart:53] Succesfully added 'Blackberry' to the cart
+[I 200412 13:27:12 test_shopping_cart:67] 'India' has been selected as delivery location
+[I 200412 13:27:12 test_shopping_cart:76] Waiting for the order confirmation message
+[I 200412 13:27:12 test_shopping_cart:80] Test completed

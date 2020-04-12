@@ -3,10 +3,11 @@ import sys
 
 sys.path.append(os.path.dirname(__file__) + "/..")
 
-import logging
+from logzero import logger
 import pytest
 from utilities.testbase import TestBase
 from pageobjects.home_page import HomePage
+
 
 class TestShoppingCart(TestBase):
     """
@@ -30,10 +31,9 @@ class TestShoppingCart(TestBase):
         
         """
         # create page objects
-        logging.getLogger().name = "test_shopping_cart_happy_path"
         home_page = HomePage(self.driver)
         checkout_page = home_page.navigate_shop_to_checkout()
-        logging.info("Navigated to shop")
+        logger.info("Navigated to shop")
 
         # find all the list items and search for 'Blackberry'
         items = checkout_page.get_card_titles()
@@ -50,7 +50,7 @@ class TestShoppingCart(TestBase):
 
         # Assert 'Blackberry' is added in the cart
         assert "Blackberry" == confirm_page.get_product_in_cart().text
-        logging.info("Succesfully added 'Blackberry' to the cart")
+        logger.info("Succesfully added 'Blackberry' to the cart")
 
         confirm_page.get_checkout_button().click()
 
@@ -64,7 +64,7 @@ class TestShoppingCart(TestBase):
 
         # click on the suggestion location - India
         confirm_page.get_auto_suggestion_india().click()
-        logging.info("'India' has been selected as delivery location")
+        logger.info("'India' has been selected as delivery location")
 
         # click on the Terms and conditions check box
         confirm_page.get_tnc_checkbox().click()
@@ -73,8 +73,8 @@ class TestShoppingCart(TestBase):
         confirm_page.get_purchase_button().click()
 
         # wait until the text is shown
-        logging.info("Waiting for the order confirmation message")
+        logger.info("Waiting for the order confirmation message")
         self.wait_for_element(confirm_page.success_alert, 4)
 
         assert "Success! Thank you!" in confirm_page.get_success_alert().text
-        logging.info("Test completed")
+        logger.info("Test completed")
